@@ -3,7 +3,7 @@
    ========================================================= */
 
 // Data e hora do casamento (formato: ano, mês-1, dia, hora, minuto)
-const WEDDING_DATE = new Date(2027, 2, 21, 16, 0); // 21 de Janeiro de 2027, 16h
+const WEDDING_DATE = new Date(2027, 0, 21, 17, 30); // 21 de Janeiro de 2027, 17h30
 
 // Link da lista de presentes (ex: link de loja, Vivara, Amazon, etc.)
 const GIFT_LIST_URL = "https://www.havan.com.br/";
