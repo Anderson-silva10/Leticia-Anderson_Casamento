@@ -1,0 +1,205 @@
+:root{
+  --paper: #f8eeee;
+  --paper-deep: #f1e0e0;
+  --ink: #263229;
+  --ink-soft: #5c6b57;
+  --ink-faint: #8b988a;
+  --gold: #ab8548;
+  --gold-light: #cba86a;
+  --gold-soft: #ece1cc;
+  --rose: #a85068;
+  --white: #fffdfa;
+  --border: rgba(38,50,41,0.14);
+  --radius: 4px;
+  --maxw: 1080px;
+}
+
+*{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+@media (prefers-reduced-motion: reduce){
+  html{ scroll-behavior:auto; }
+  *{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; }
+}
+
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:'Jost', sans-serif; font-size:16px; line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3{ font-family:'Cormorant Garamond', serif; margin:0; font-weight:500; }
+a{ color:inherit; }
+::selection{ background:var(--gold); color:#fff; }
+
+.wrap{ max-width:var(--maxw); margin:0 auto; padding:0 28px; }
+.wrap-narrow{ max-width:640px; margin:0 auto; padding:0 28px; text-align:center; }
+
+/* ================= HEADER ================= */
+.site-header{
+  position:sticky; top:0; z-index:50; background:rgba(248,238,238,0.88);
+  backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--border);
+}
+.header-row{ display:flex; align-items:center; justify-content:space-between; padding:14px 28px; }
+.monogram{
+  font-family:'Cormorant Garamond', serif; font-style:italic; font-size:1.3rem; font-weight:500;
+  text-decoration:none; color:var(--ink); letter-spacing:0.02em;
+}
+.monogram span{ color:var(--gold); margin:0 3px; }
+.header-nav{ display:flex; gap:30px; }
+.header-nav a{
+  text-decoration:none; color:var(--ink-soft); font-size:0.78rem; letter-spacing:0.1em; text-transform:uppercase;
+  position:relative; padding-bottom:3px;
+}
+.header-nav a::after{
+  content:""; position:absolute; left:0; bottom:0; width:0; height:1px; background:var(--gold); transition:width .25s ease;
+}
+.header-nav a:hover::after{ width:100%; }
+
+/* ================= HERO / CARROSSEL ================= */
+.hero{ position:relative; }
+.carousel{ position:relative; height:92vh; min-height:520px; max-height:900px; overflow:hidden; background:var(--ink); }
+.carousel-track{
+  display:flex; height:100%; width:100%; transition:transform .7s cubic-bezier(.65,0,.35,1);
+}
+.carousel-slide{
+  position:relative; flex:0 0 100%; height:100%; overflow:hidden;
+  background:linear-gradient(155deg, #35473a 0%, #263229 55%, #1c2620 100%);
+  display:flex; align-items:center; justify-content:center;
+}
+.carousel-slide img{ width:100%; height:100%; object-fit:cover; display:block; }
+.carousel-slide.img-missing::before{
+  content:"♥"; font-size:3.2rem; color:rgba(255,255,255,0.16); font-family:'Cormorant Garamond', serif;
+}
+.carousel-slide.img-missing::after{
+  content:"Adicione sua foto em /images"; position:absolute; bottom:26%; left:50%; transform:translateX(-50%);
+  font-family:'Jost', sans-serif; font-size:0.7rem; letter-spacing:0.08em; text-transform:uppercase; color:rgba(255,255,255,0.35);
+  white-space:nowrap;
+}
+
+.carousel::before{
+  content:""; position:absolute; inset:0; z-index:2; pointer-events:none;
+  background:linear-gradient(180deg, rgba(20,26,20,0.05) 0%, rgba(20,26,20,0.15) 45%, rgba(18,24,18,0.72) 100%);
+}
+
+.hero-overlay{
+  position:absolute; left:0; right:0; bottom:0; z-index:3; text-align:center; padding:0 20px 64px;
+  display:flex; flex-direction:column; align-items:center; gap:10px; color:#fdfbf6;
+}
+.eyebrow{
+  font-family:'Jost', sans-serif; font-size:0.72rem; letter-spacing:0.28em; text-transform:uppercase; color:var(--gold-light);
+}
+.couple-names{
+  font-family:'Mrs Saint Delafield', cursive; font-size:clamp(3.2rem, 9vw, 6rem); font-weight:400; line-height:1;
+  color:#fffdfa; text-shadow:0 2px 24px rgba(0,0,0,0.25);
+}
+.couple-names span{ color:var(--gold-light); font-size:0.65em; margin:0 6px; }
+.wedding-date-small{ font-size:0.82rem; letter-spacing:0.08em; color:rgba(253,251,246,0.8); }
+
+.carousel-arrow{
+  position:absolute; top:50%; transform:translateY(-50%); z-index:4; width:42px; height:42px; border-radius:50%;
+  background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.35); color:#fff; cursor:pointer;
+  display:flex; align-items:center; justify-content:center; backdrop-filter:blur(4px); transition:background .2s ease;
+}
+.carousel-arrow:hover{ background:rgba(255,255,255,0.25); }
+.carousel-arrow svg{ width:18px; height:18px; }
+.carousel-arrow.prev{ left:18px; }
+.carousel-arrow.next{ right:18px; }
+
+.carousel-dots{ position:absolute; bottom:20px; left:50%; transform:translateX(-50%); z-index:4; display:flex; gap:10px; }
+.carousel-dot{
+  width:7px; height:7px; border-radius:50%; background:rgba(255,255,255,0.4); border:none; cursor:pointer; padding:0;
+  transition:background .2s ease, transform .2s ease;
+}
+.carousel-dot.active{ background:var(--gold-light); transform:scale(1.3); }
+
+/* ================= MENSAGEM ================= */
+.message-section{ padding:88px 0 60px; }
+.message-text{
+  font-family:'Cormorant Garamond', serif; font-style:italic; font-size:clamp(1.25rem, 2.4vw, 1.55rem);
+  color:var(--ink); line-height:1.7; margin:0 0 26px;
+}
+.signature-names{ font-family:'Mrs Saint Delafield', cursive; font-size:1.6rem; color:var(--gold); }
+
+/* ================= CONTAGEM REGRESSIVA ================= */
+.countdown-section{ padding:20px 0 90px; }
+.rule{ height:1px; background:linear-gradient(90deg, transparent, var(--border) 20%, var(--border) 80%, transparent); margin:26px 0; }
+.section-eyebrow{
+  display:block; text-align:center; font-size:0.72rem; letter-spacing:0.22em; text-transform:uppercase;
+  color:var(--ink-faint); margin-bottom:26px;
+}
+.countdown{ display:flex; align-items:center; justify-content:center; gap:16px; flex-wrap:wrap; }
+.countdown-unit{ display:flex; flex-direction:column; align-items:center; gap:6px; min-width:64px; }
+.countdown-value{
+  font-family:'Cormorant Garamond', serif; font-size:clamp(2.2rem, 6vw, 3.4rem); font-weight:500; color:var(--ink);
+  line-height:1; font-variant-numeric:tabular-nums;
+}
+.countdown-label{ font-size:0.66rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--ink-faint); }
+.countdown-sep{ font-family:'Cormorant Garamond', serif; font-size:2rem; color:var(--gold-light); transform:translateY(-8px); }
+
+/* ================= LINKS ================= */
+.links-section{ padding:0 0 100px; }
+.links-grid{ display:grid; grid-template-columns:repeat(3, 1fr); gap:26px; }
+.link-card{
+  background:var(--white); border:1px solid var(--border); border-radius:var(--radius);
+  padding:38px 28px 30px; text-align:center; text-decoration:none; color:var(--ink);
+  display:flex; flex-direction:column; align-items:center; transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+  position:relative;
+}
+.link-card::before, .link-card::after{
+  content:""; position:absolute; top:8px; bottom:8px; width:1px; background:var(--border);
+}
+.link-card::before{ left:8px; } .link-card::after{ right:8px; }
+.link-card:hover{ transform:translateY(-5px); box-shadow:0 24px 40px -26px rgba(38,50,41,0.35); border-color:var(--gold-soft); }
+
+.seal{
+  width:64px; height:64px; border-radius:50%; background:radial-gradient(circle at 32% 28%, #8b6969, #8b6956);
+  color:var(--gold-light); display:flex; align-items:center; justify-content:center; margin-bottom:18px;
+  box-shadow:0 0 0 2px var(--paper), 0 0 0 3px var(--gold-soft), 0 10px 18px -10px rgba(38,50,41,0.5);
+}
+.seal svg{ width:24px; height:24px; }
+
+.link-card h3{ font-size:1.35rem; margin-bottom:10px; }
+.link-card p{ font-size:0.86rem; color:var(--ink-soft); margin:0 0 20px; max-width:26ch; }
+.link-cta{
+  display:inline-flex; align-items:center; gap:6px; font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase;
+  color:var(--gold); font-weight:600; margin-top:auto;
+}
+.link-cta svg{ width:13px; height:13px; transition:transform .2s ease; }
+.link-card:hover .link-cta svg{ transform:translateX(3px); }
+
+/* ================= FOOTER ================= */
+.site-footer{
+  background:#8b6956; color:var(--paper); text-align:center; padding:70px 28px 44px;
+  display:flex; flex-direction:column; align-items:center; gap:6px;
+}
+.footer-names{ font-family:'Mrs Saint Delafield', cursive; font-size:2.4rem; color:#fffdfa; }
+.footer-names span{ color:var(--gold-light); margin:0 6px; }
+.site-footer p{ font-size:0.82rem; color:rgba(248,238,238,0.65); margin:2px 0; }
+.footer-note{ margin-top:14px !important; font-family:'Cormorant Garamond', serif; font-style:italic; font-size:0.95rem !important; color:rgba(248,238,238,0.8) !important; }
+
+/* ================= REVEAL ================= */
+.reveal{ opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease; }
+.reveal.in{ opacity:1; transform:translateY(0); }
+
+/* ================= FOCUS VISIBLE ================= */
+a:focus-visible, button:focus-visible{ outline:2px solid var(--gold); outline-offset:3px; }
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 860px){
+  .links-grid{ grid-template-columns:1fr; max-width:420px; margin:0 auto; }
+  .header-nav{ gap:18px; }
+  .carousel{ height:82vh; }
+}
+@media (max-width: 560px){
+  .header-row{ padding:12px 20px; }
+  .header-nav a{ font-size:0.68rem; letter-spacing:0.06em; }
+  .carousel{ height:78vh; min-height:440px; }
+  .hero-overlay{ padding-bottom:46px; }
+  .countdown{ gap:8px; }
+  .countdown-unit{ min-width:52px; }
+  .countdown-sep{ display:none; }
+  .message-section{ padding:64px 0 44px; }
+  .countdown-section{ padding:10px 0 64px; }
+  .links-section{ padding:0 0 70px; }
+  .carousel-arrow{ width:36px; height:36px; }
+}
