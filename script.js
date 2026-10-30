@@ -6,10 +6,10 @@
 const WEDDING_DATE = new Date(2027, 0, 21, 17, 30); // 21 de Janeiro de 2027, 17h30
 
 // Link da lista de presentes (ex: link de loja, Vivara, Amazon, etc.)
-const GIFT_LIST_URL = "https://www.havan.com.br/";
+const GIFT_LIST_URL = "https://lista.havan.com.br/Convidado/ItensListaPresente/962347";
 
 // Link para confirmar presença (ex: Google Forms, WhatsApp, Typeform)
-const RSVP_URL = "https://wa.me/5512997047086?utm_source=chatgpt.com";
+const RSVP_URL = "https://wa.me/5512982478671?utm_source=chatgpt.com";
 
 // Endereço do local (usado para gerar o link do Google Maps automaticamente)
 const VENUE_ADDRESS = "Recanto VIP, Rodovia Aristeu Vieira Vilela N°601, Guaratinguetá, SP";
@@ -115,7 +115,7 @@ function setupCountdown(){
       els.days.textContent = '00'; els.hours.textContent = '00';
       els.minutes.textContent = '00'; els.seconds.textContent = '00';
       const label = document.querySelector('.section-eyebrow');
-      if(label) label.textContent = 'Já somos casados!';
+      if(label) label.textContent = 'Estamos casados!';
       clearInterval(timer);
       return;
     }

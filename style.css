@@ -112,6 +112,11 @@ a{ color:inherit; }
 }
 .carousel-dot.active{ background:var(--gold-light); transform:scale(1.3); }
 
+@media (min-width: 861px){
+  .carousel-slide.pos-top img{    object-position: center 37%; }
+  .carousel-slide.pos-bottom img{ object-position: center 68%; }
+}
+
 /* ================= MENSAGEM ================= */
 .message-section{ padding:88px 0 60px; }
 .message-text{
