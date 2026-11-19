@@ -9,7 +9,17 @@ const WEDDING_DATE = new Date(2027, 0, 21, 17, 30); // 21 de Janeiro de 2027, 17
 const GIFT_LIST_URL = "https://lista.havan.com.br/Convidado/ItensListaPresente/962347";
 
 // Link para confirmar presença (ex: Google Forms, WhatsApp, Typeform)
-const RSVP_URL = "https://wa.me/5512982478671?utm_source=chatgpt.com";
+// const RSVP_URL = "https://wa.me/5512982478671?utm_source=chatgpt.com";
+// Link para confirmar presença via WhatsApp (com mensagem pré-definida)
+const WHATSAPP_NUMBER = "5512982478671";
+
+const RSVP_MESSAGE =
+  "Olá! Gostaria de confirmar presença no casamento de Anderson e Letícia! 🤎\n\n" +
+  "Nome completo de todos os convidados:\n\n" +
+  "Idade das crianças (se houver):\n";
+
+const RSVP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(RSVP_MESSAGE)}`;
+
 
 // Endereço do local (usado para gerar o link do Google Maps automaticamente)
 const VENUE_ADDRESS = "Recanto VIP, Rodovia Aristeu Vieira Vilela N°601, Guaratinguetá, SP";
